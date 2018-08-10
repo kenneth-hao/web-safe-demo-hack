@@ -34,7 +34,7 @@
 
     <h6 style="color: #DDD;">神秘区域</h6>
     <p style="color: aliceblue;">
-        &lt;script&gt;$('body').append('&lt;iframe src="http://localhost:9090/csrf/camouflage_1" style="display: none"&gt;&lt;/iframe&gt;');&lt;/script&gt;
+        &lt;script&gt;$('body').append('&lt;iframe src="<span th:text="${hackSite}"></span>/csrf/camouflage_1" style="display: none"&gt;&lt;/iframe&gt;');&lt;/script&gt;
     </p>
 </div>
 </body>
