@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Web 安全演示 - CSRF</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>这是某某知名博主的个人站点</h1>
+    <p style="color: #999; margin-left: 12px; margin-top: 30px;">特别说明：这个站点可以被 XSS 注入。</p>
+
+    <div style="margin-top: 55px; margin-bottom: 60px; font-family: Arial, Helvetica, sans-serif;  font-size: 1.4em;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记得小时候，大概初中吧，放学路上，被几个混混截住。我急中生智，对着一位路过的陌生大叔叫道：“二叔，有人欺负我！”哪知混混甚是嚣张，连大人都不怕，把大叔与我都揍了一顿。混混们走后，大叔为了解气，又把我揍了一顿。
+        <br />
+        <br />
+        bla..bla..bla..bla..bla..bla..bla..bla..bla..bla..
+    </div>
+
+    <h3>评论列表</h3>
+    <div style="padding: 25px 5px 15px 10px;">
+        <div th:each="comment : ${comments}">
+            <p th:text="${comment.username}"></p>
+            <p th:utext="${comment.comment}" style="margin-left: 25px;"></p>
+        </div>
+    </div>
+
+    <div style="margin-top: 38px; "></div>
+    <form action="/csrf/xx_blog/comment" method="post">
+        <input name="comment" value="" />
+        <button class="submit">评论</button>
+    </form>
+
+    <h6 style="color: #DDD;">神秘区域</h6>
+    <p style="color: aliceblue;">
+        &lt;script&gt;$('body').append('&lt;iframe src="http://localhost:9090/csrf/camouflage_1" style="display: none"&gt;&lt;/iframe&gt;');&lt;/script&gt;
+    </p>
+</div>
+</body>
+</html>
