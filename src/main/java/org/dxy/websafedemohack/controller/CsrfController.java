@@ -30,6 +30,11 @@ public class CsrfController {
         return "csrf/xx_blog";
     }
 
+    @RequestMapping("/ask_question")
+    public String askQuestion() {
+        return "csrf/ask_question";
+    }
+
     @RequestMapping("/camouflage_1")
     public String camouflage1() {
         return "csrf/camouflage_1";
